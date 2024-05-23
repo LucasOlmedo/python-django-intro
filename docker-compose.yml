@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+      build: .
+      command: python api_rest/manage.py runserver 0.0.0.0:5000
+      volumes:
+        - .:/app
+      ports:
+        - "5000:5000"
+      depends_on:
+        - mysql
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=python_django
+    volumes:
+      - mysql_data:/var/lib/mysql
+volumes:
+  mysql_data:
