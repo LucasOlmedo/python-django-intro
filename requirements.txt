@@ -1,3 +1,4 @@
 djangorestframework
 mysqlclient
 ipython
+Pillow
